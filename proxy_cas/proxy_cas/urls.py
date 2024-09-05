@@ -17,8 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 import django_cas_ng.views
+from .views import home
+from . import views
 
 urlpatterns = [
+    path('', home, name="home"),
     path('admin/', admin.site.urls),
+    path('cas/pt', views.get_pt, name='get_pt'),
     path('cas/callback', django_cas_ng.views.CallbackView.as_view(), name='cas_ng_proxy_callback'),
 ]

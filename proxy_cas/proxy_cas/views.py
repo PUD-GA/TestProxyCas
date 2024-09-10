@@ -29,7 +29,9 @@ def get_pt(request):
             client = get_cas_client(service_url=request.GET.get('service'))
             pt = client.get_proxy_ticket(pgt.pgt)
             if pt is not None:
-                return JsonResponse({'pt': pt})
+                #return JsonResponse({'pt': pt})
+                print("OK PT")
+                return render(request, "proxy_cas/testok.html")
             else:
                 response = JsonResponse({'status':'false','message': 'Invalid pgtiou'})
                 response.status_code = 400

@@ -132,7 +132,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-CAS_SERVER_URL = 'https://mamacas1.onrender.com/cas/login'
+CAS_SERVER_URL = 'https://mamacas1.onrender.com/cas'
 CAS_VERSION = '3'
 
 # This production code might break development mode, so we check whether we're in DEBUG mode

@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config("MY_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -83,7 +83,6 @@ WSGI_APPLICATION = 'proxy_cas.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-'''
 URLDB = ('postgresql://' + config("PGUSER") + ':' + config("PGPASSWORD") + '@' +
          config("PGHOST") + ':' + config("PGPORT") + '/' + config("PGDATABASE") +
          '?sslmode=require')
@@ -95,14 +94,7 @@ DATABASES = {
         # that have been idle for 30 seconds or longer. Set this to 0 if you'd
         # like to use a new connection for each database query.
         conn_max_age=30)}
-'''
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -143,14 +135,12 @@ STATIC_URL = '/static/'
 CAS_SERVER_URL = 'https://mamacas1.onrender.com/cas'
 CAS_VERSION = '3'
 
-'''
 # This production code might break development mode, so we check whether we're in DEBUG mode
 if not DEBUG:    # Tell Django to copy static assets into a path called `staticfiles` (this is specific to Render)
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
     # Enable the WhiteNoise storage backend, which compresses static files to reduce disk use
     # and renames the files with unique names for each version to support long-term caching
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-'''
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
